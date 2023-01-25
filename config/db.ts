@@ -6,11 +6,11 @@ async function connect() {
   const dbUri = config.get<string>('dbUri')
 
   try {
-    mongoose.set('strictQuery', true) // Analisar o que isso faz
+    mongoose.set('strictQuery', true)
     await mongoose.connect(dbUri)
     Logger.info('Conectado à base de dados 🔗')
   }
-  
+
   catch (e: any) {
     Logger.error(`Error: ${e}`)
     process.exit(1)

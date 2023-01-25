@@ -1,9 +1,10 @@
-require('dotenv').config();
+/* eslint-disable import/first */
+require('dotenv').config()
 
 import express from 'express'
 import config from 'config'
 import router from './routes/router'
-import Logger from '../config/logger';
+import Logger from '../config/logger'
 import morganMiddleware from './middlewares/morganMiddleware'
 import db from '../config/db'
 
