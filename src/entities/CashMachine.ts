@@ -1,8 +1,13 @@
 export class CashMachine {
   id
-  isAutenticated
-  constructor(id: string, isAutenticated: boolean) {
+  cash
+
+  constructor(
+    id: string,
+    cash: number
+    ) {
     this.id = id
-    this.isAutenticated = isAutenticated
+    this.cash = cash
+
   }
 }

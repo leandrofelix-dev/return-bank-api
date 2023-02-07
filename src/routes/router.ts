@@ -8,6 +8,7 @@ const router = Router()
 export default router
   .get('/test', (req: Request, res: Response) => {
     res.status(200).json({ msg: 'API Working👨🏽‍🚀' })
+    // res.status(200).json({ msg: actualDate.format('DD-MM-YYYY') })
   })
   .post('/user', userCreateValidator(), validate, createUser)
   .get('/user/:id', getUser)

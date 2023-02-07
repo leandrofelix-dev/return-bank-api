@@ -1,4 +1,5 @@
 import { body } from 'express-validator'
+import { minDateToCreateUser } from '../../lib/dayJs'
 
 export const userCreateValidator = () => {
   return [
@@ -10,9 +11,9 @@ export const userCreateValidator = () => {
 
     body('birthDate')
       .isDate({format: 'DD-MM-YYYY'})
-        .withMessage('Must be a valid date2')
-      .isBefore('05-02-2023')
-        .withMessage('Must be a date after 05-02-2023'),
+        .withMessage('Must be a valid date')
+      .isBefore(`${minDateToCreateUser}`)
+        .withMessage(`Must be a date after ${minDateToCreateUser}`),
 
     body('password')
       .isString()

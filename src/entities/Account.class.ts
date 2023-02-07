@@ -1,22 +1,47 @@
-import { AccountType, UserType } from '../@types/types'
+import { AccountType } from '../@types/types'
+
+import { Transaction } from './Transaction.class'
+import { User } from './User.class'
 
 export class Account {
   id
-  type
-  user
-  cashReal
-  cashDollar
+  private _owner
+  private _type
+  private _cash
+  private _transactions
 
   constructor(
-    id: string,
-    type: AccountType,
-    user: UserType,
-    cashReal: number,
-    cashDollar: number) {
-      this.id = id
-      this.type = type
-      this.user = user
-      this.cashReal = cashReal
-      this.cashDollar = cashDollar
+    _id: string,
+    _type: AccountType,
+    _owner: User,
+    _cash: number,
+    _transactions: Transaction[]
+
+  ) {
+    this.id = _id
+    this._type = _type
+    this._owner = _owner
+    this._cash = _cash
+    this._transactions = _transactions
+  }
+
+  public get type(): AccountType {
+    return this._type
+  }
+
+  public get owner(): User {
+    return this._owner
+  }
+
+  public get cash(): number {
+    return this._cash
+  }
+
+  public set cash(value: number) {
+    this._cash = value
+  }
+
+  public get transactions(): Transaction[] {
+    return this._transactions
   }
 }
