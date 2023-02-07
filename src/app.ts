@@ -5,7 +5,7 @@ import express from 'express'
 import config from 'config'
 import router from './routes/router'
 import Logger from '../config/logger'
-import morganMiddleware from './middlewares/morganMiddleware'
+import morganMiddleware from './lib/loggerMiddleware'
 import db from '../config/db'
 
 const app = express()

@@ -4,24 +4,20 @@ export const userCreateValidator = () => {
   return [
     body('name')
       .isString()
-        .withMessage('name: string')
+        .withMessage('Must be a string')
       .isLength({ min: 5 })
-        .withMessage('name.length >= 5'),
+        .withMessage('Must be at least 5 chars long'),
 
-    // body('rating')
-    //   .isNumeric()
-    //   .withMessage('rating: number')
-    //   .custom((value: number) => {
-    //     if (value <= 0 || value > 10) {
-    //       throw new Error('rating > 0 && rating <= 10')
-    //     }
-    //     return true
-    //   }),
+    body('birthDate')
+      .isDate({format: 'DD-MM-YYYY'})
+        .withMessage('Must be a valid date2')
+      .isBefore('05-02-2023')
+        .withMessage('Must be a date after 05-02-2023'),
 
-    // body('description').isString().withMessage('descrição é obrigatória'),
-
-    // body('director').isString().withMessage('diretor é obrigatório'),
-
-    // body('poster').isURL().withMessage('A imagem precisa ser uma URL'),
+    body('password')
+      .isString()
+        .withMessage('Must be a string')
+      .isLength({ min: 8 })
+        .withMessage('Must be at least 8 chars long'),
   ]
 }

@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
 import { UserModel } from '../models/User'
 import Logger from '../../config/logger'
+import { userCreateValidator } from '../middlewares/validators/userValidation'
 
 export async function createUser(req: Request, res: Response) {
   try {
     const data = req.body
     const user = await UserModel.create(data)
-
     return res.status(201).json({ added: user })
   } catch (e: any) {
     Logger.error(`Erro no sistema: ${e.message}`)
