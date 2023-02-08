@@ -1,13 +1,30 @@
+import { Account } from './Account.class';
 export class CashMachine {
   id
-  cash
+  private _cash
 
   constructor(
     id: string,
-    cash: number
+    _cash: number
+
     ) {
     this.id = id
-    this.cash = cash
+    this._cash = _cash
+  }
 
+  public get cash(): number {
+    return this._cash
+  }
+
+  public set cash(newCash: number) {
+    this._cash = newCash
+  }
+
+  public addCash(account: Account, cash: number): void {
+    this._cash += cash
+  }
+
+  public transferCash(rece: Account, cash: number): void {
+    this._cash += cash
   }
 }

@@ -1,27 +1,48 @@
+import { Date } from "mongoose"
 import { Account } from "./Account.class"
 
 export class User {
   id
-  name
-  birthDate
-  password
-  accounts
+  private _name
+  private _birthDate
+  private _password
+  private _accounts
 
   constructor(
     id: string,
-    name: string,
-    birthDate: Date,
-    password: number,
-    accounts: Account[]
+    _name: string,
+    _birthDate: Date,
+    _password: number,
+    _accounts: Account[]
   ){
     this.id = id
-    this.name = name
-    this.birthDate = birthDate
-    this.password = password
-    this.accounts = accounts
+    this._name = _name
+    this._birthDate = _birthDate
+    this._password = _password
+    this._accounts = _accounts
   }
 
-  authentication(password: number) {
-    // Código aqui
+  public get name(): string {
+    return this._name
+  }
+
+  public get birthDate(): Date {
+    return this._birthDate
+  }
+
+  public get password(): number {
+    return this._password
+  }
+
+  public set password(newPassword: number) {
+    this._password = newPassword
+  }
+
+  public get accounts(): Account[] {
+    return this._accounts
+  }
+
+  public set accounts(newAccounts: Account[]) {
+    this._accounts = newAccounts
   }
 }

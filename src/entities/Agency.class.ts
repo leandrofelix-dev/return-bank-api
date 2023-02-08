@@ -3,19 +3,35 @@ import { CashMachine } from './CashMachine'
 
 export class Agency {
   id
-  address
-  agencyNumber
-  machines
+  private _address
+  private _agencyNumber
+  private _machines
 
   constructor(
     id: string,
-    address: AddressType,
-    agency: number,
-    machines: CashMachine[]
+    _address: AddressType,
+    _agency: number,
+    _machines: CashMachine[]
   ) {
     this.id = id
-    this.address = address
-    this.agencyNumber = agency
-    this.machines = machines
+    this._address = _address
+    this._agencyNumber = _agency
+    this._machines = _machines
+  }
+
+  public get address(): AddressType {
+    return this._address
+  }
+
+  public get agencyNumber(): number {
+    return this._agencyNumber
+  }
+
+  public get machines(): CashMachine[] {
+    return this._machines
+  }
+
+  public set cashMachines(newMachines: CashMachine[]) {
+    this._machines = newMachines
   }
 }

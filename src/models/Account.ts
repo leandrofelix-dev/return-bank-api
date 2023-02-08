@@ -1,16 +1,16 @@
 import { model, Schema } from 'mongoose'
+import { User } from '../entities/User.class'
 
 const accountSchema = new Schema(
   {
     id: { type: String },
+    owner: { type: String },
     type: { type: String },
-    userId: { type: String },
-    cashReal: { type: Number },
-    cashDollar: { type: Number }
+    cash: { type: Number }
   },
   {
     timestamps: true,
   },
 )
 
-export const UserModel = model('Account', accountSchema)
+export const accountModel = model('Account', accountSchema)

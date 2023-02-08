@@ -11,14 +11,14 @@ export class Account {
   private _transactions
 
   constructor(
-    _id: string,
+    id: string,
     _type: AccountType,
     _owner: User,
     _cash: number,
     _transactions: Transaction[]
 
   ) {
-    this.id = _id
+    this.id = id
     this._type = _type
     this._owner = _owner
     this._cash = _cash

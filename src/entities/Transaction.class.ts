@@ -3,32 +3,38 @@ import { User } from "./User.class"
 
 export class Transaction {
   id
-  recipient
-  sender
-  account
-  cashValue
+  private _account
+  private _recipient
+  private _sender
+  private _cashValue
 
   constructor(
     id: string,
-    recipient: User,
-    sender: User,
-    account: Account,
-    cashValue: number
+    _account: Account,
+    _recipient: User,
+    _sender: User,
+    _cashValue: number
   ) {
     this.id = id
-    this.account = account
-    this.recipient = recipient
-    this.sender = sender
-    this.cashValue = cashValue
+    this._account = _account
+    this._recipient = _recipient
+    this._sender = _sender
+    this._cashValue = _cashValue
   }
 
-  getTransaction() {
-    return {
-      id: this.id,
-      recipient: this.recipient,
-      sender: this.sender,
-      account: this.account,
-      cashValue: this.cashValue
-    }
+  public get account(): Account {
+    return this._account
+  }
+
+  public get recipient(): User {
+    return this._recipient
+  }
+
+  public get sender(): User {
+    return this._sender
+  }
+
+  public get cashValue(): number {
+    return this._cashValue
   }
 }
