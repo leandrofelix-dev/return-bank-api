@@ -3,6 +3,7 @@ import { validate } from '../middlewares/handleValidation'
 import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../controllers/prisma/userController'
 import { createAccount, deleteAccount, getAccount, getAllAccounts, updateAccount } from '../controllers/prisma/accountController'
 import { createTransaction, deleteTransaction, getTransaction, getAllTransactions, updateTransaction } from '../controllers/prisma/transactionController'
+import { createTransfer, deleteTransfer, getTransfer, getAllTransfers, updateTransfer } from '../controllers/prisma/transferController'
 
 import { userCreateValidator } from '../middlewares/validators/userValidator'
 import { accountCreateValidator } from '../middlewares/validators/accountValidator'
@@ -36,6 +37,11 @@ export default router
   .delete('/transaction/:id', deleteTransaction)
   .patch('/transaction/:id', updateTransaction)
 
-  /* Transfer */
+/* Transfer */
+  .get('/transfer/:id', getTransfer)
+  .get('/getAllTransfers', getAllTransfers)
+  .post('/transfer', transactionCreateValidator(), validate, createTransfer)
+  .delete('/transfer/:id', deleteTransfer)
+  .patch('/transfer/:id', updateTransfer)
   /* Agency */
   /* CashMachine */
