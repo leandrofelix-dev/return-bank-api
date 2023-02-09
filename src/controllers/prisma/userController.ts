@@ -43,3 +43,35 @@ export async function createUser(req: Request, res: Response) {
     console.log(`Error: ${e.message}`)
   }
 }
+
+export async function deleteUser(req: Request, res: Response) {
+  const data = req.params.id
+  try {
+    const user = await prisma.user.delete({
+      where: { id: data }
+    })
+    return res.status(200).json(user)
+  }
+  catch (e: any) {
+    console.log(`Error: ${e.message}`)
+  }
+}
+
+export async function updateUser(req: Request, res: Response) {
+  const data = req.body
+  const id = req.params.id
+  try {
+    const user = await prisma.user.update({
+      where: { id: id },
+      data: {
+        name: data.name,
+        birthDate: `${data.birthDate}T00:00:00.000Z`,
+        password: data.password
+      }
+    })
+    return res.status(200).json(user)
+  }
+  catch (e: any) {
+    console.log(`Error: ${e.message}`)
+  }
+}
