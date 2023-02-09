@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  birthDate DateTime
+  password  String
+  accounts  Account[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Account {
+  id           String        @id @default(uuid())
+  type         String
+  owner        User?         @relation(fields: [userId], references: [id])
+  cash         Float
+  transactions Transaction[]
+  transfers    Transfer[]
+  userId       String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("accounts")
+}
+
+// This model references transactions such as deposit and withdrawal
+model Transaction {
+  id        String   @id @default(uuid())
+  account   Account? @relation(fields: [accountId], references: [id])
+  cash      Float
+  accountId String?
+  type      String
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Transfer  Transfer[]
+
+  @@map("transactions")
+}
+
+model Transfer {
+  id                String       @id @default(uuid())
+  senderTransaction Transaction? @relation(fields: [transactionId], references: [id])
+  receiver          Account?     @relation(fields: [accountId], references: [id])
+  cash              Float
+  transactionId     String?
+  accountId         String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transfers")
+}
+
+model Agency {
+  id       String        @id @default(uuid())
+  address  String
+  agency   Int
+  machines CashMachine[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("agencys")
+}
+
+model CashMachine {
+  id       String  @id @default(uuid())
+  agency   Agency? @relation(fields: [agencyId], references: [id])
+  agencyId String?
+  cash     Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("machines")
+}

@@ -12,7 +12,7 @@ export class User {
     id: string,
     _name: string,
     _birthDate: Date,
-    _password: number,
+    _password: string,
     _accounts: Account[]
   ){
     this.id = id
@@ -30,11 +30,11 @@ export class User {
     return this._birthDate
   }
 
-  public get password(): number {
+  public get password(): string {
     return this._password
   }
 
-  public set password(newPassword: number) {
+  public set password(newPassword: string) {
     this._password = newPassword
   }
 

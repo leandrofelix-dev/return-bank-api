@@ -10,7 +10,7 @@ export const userCreateValidator = () => {
         .withMessage('Must be at least 5 chars long'),
 
     body('birthDate')
-      .isDate({format: 'DD-MM-YYYY'})
+      .isDate({ format: 'YYYY-MM-DD' })
         .withMessage('Must be a valid date')
       .isBefore(`${minDateToCreateUser}`)
         .withMessage(`Must be a date after ${minDateToCreateUser}`),

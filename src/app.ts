@@ -1,21 +1,15 @@
 /* eslint-disable import/first */
-require('dotenv').config()
 
+import { prisma } from './lib/prisma'
 import express from 'express'
-import config from 'config'
 import router from './routes/router'
-import Logger from '../config/logger'
-import morganMiddleware from './lib/loggerMiddleware'
-import db from '../config/db'
 
 const app = express()
-const port = config.get<number>('port')
+const port = process.env.PORT
 
 app.use(express.json())
-app.use(morganMiddleware)
 app.use('/api/', router)
 
 app.listen(port, async () => {
-  await db()
-  Logger.info(`Executando na porta: ${port} ✅`)
+  console.log(`Executando na porta: ${port} ✅`)
 })
