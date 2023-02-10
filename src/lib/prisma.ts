@@ -22,5 +22,5 @@ export const prisma = new PrismaClient({
 })
 
 prisma.$on('query', (e) => {
-  console.log(`${e.query} in ${e.duration} ms`)
+  console.log(`Request in ${e.duration} ms`)
 })

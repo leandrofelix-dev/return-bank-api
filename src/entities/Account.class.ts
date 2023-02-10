@@ -1,6 +1,7 @@
 import { AccountType } from '../@types/types'
 
 import { Transaction } from './Transaction.class'
+import { Transfer } from './Transfer.class'
 import { User } from './User.class'
 
 export class Account {
@@ -9,13 +10,15 @@ export class Account {
   private _type
   private _cash
   private _transactions
+  private _transfers
 
   constructor(
     id: string,
     _type: AccountType,
     _owner: User,
     _cash: number,
-    _transactions: Transaction[]
+    _transactions: Transaction[],
+    _transfers: Transfer[]
 
   ) {
     this.id = id
@@ -23,6 +26,7 @@ export class Account {
     this._owner = _owner
     this._cash = _cash
     this._transactions = _transactions
+    this._transfers = _transfers
   }
 
   public get type(): AccountType {
@@ -43,5 +47,9 @@ export class Account {
 
   public get transactions(): Transaction[] {
     return this._transactions
+  }
+
+  public get transfers(): Transfer[] {
+    return this._transfers
   }
 }
