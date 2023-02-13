@@ -37,11 +37,12 @@ model Account {
 
 // This model references transactions such as deposit and withdrawal
 model Transaction {
-  id        String   @id @default(uuid())
-  account   Account? @relation(fields: [accountId], references: [id])
-  cash      Float
-  accountId String?
-  type      String
+  id          String   @id @default(uuid())
+  account     Account? @relation(fields: [accountId], references: [id])
+  cash        Float
+  accountId   String?
+  type        String
+  description String
 
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt

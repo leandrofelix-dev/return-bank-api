@@ -33,21 +33,18 @@ export default router
   .get('/getAllAccounts', getAllAccounts)
   .post('/account', accountCreateValidator(), validate, createAccount)
   .delete('/account/:id', deleteAccount)
-  .patch('/account/:id', updateAccount)
 
   /* Transaction */
   .get('/transaction/:id', getTransaction)
   .get('/getAllTransactions', getAllTransactions)
   .post('/transaction', transactionCreateValidator(), validate, createTransaction)
   .delete('/transaction/:id', deleteTransaction)
-  .patch('/transaction/:id', updateTransaction)
 
 /* Transfer */
   .get('/transfer/:id', getTransfer)
   .get('/getAllTransfers', getAllTransfers)
   .post('/transfer', transactionCreateValidator(), validate, createTransfer)
   .delete('/transfer/:id', deleteTransfer)
-  .patch('/transfer/:id', updateTransfer)
 
   /* Agency */
   .get('/agency/:id', getAgency)

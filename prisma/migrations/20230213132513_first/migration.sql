@@ -25,6 +25,7 @@ CREATE TABLE "transactions" (
     "cash" REAL NOT NULL,
     "accountId" TEXT,
     "type" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
     CONSTRAINT "transactions_accountId_fkey" FOREIGN KEY ("accountId") REFERENCES "accounts" ("id") ON DELETE SET NULL ON UPDATE CASCADE
