@@ -11,7 +11,7 @@ export class Agency {
     id: string,
     _address: AddressType,
     _agency: number,
-    _machines: CashMachine[]
+    _machines: CashMachine[],
   ) {
     this.id = id
     this._address = _address

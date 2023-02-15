@@ -1,4 +1,4 @@
-import { Transaction } from './Transaction.class';
+import { Transaction } from './Transaction.class'
 import { User } from './User.class'
 
 export class Transfer {
@@ -11,8 +11,7 @@ export class Transfer {
     id: string,
     _senderTransaction: Transaction,
     _receiver: User,
-    _cash: number
-
+    _cash: number,
   ) {
     this.id = id
     this._senderTransaction = _senderTransaction
@@ -31,5 +30,4 @@ export class Transfer {
   public get cash(): number {
     return this._cash
   }
-
 }

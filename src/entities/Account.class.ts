@@ -18,8 +18,7 @@ export class Account {
     _owner: User,
     _cash: number,
     _transactions: Transaction[],
-    _transfers: Transfer[]
-
+    _transfers: Transfer[],
   ) {
     this.id = id
     this._type = _type

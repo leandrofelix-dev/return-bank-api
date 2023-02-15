@@ -1,5 +1,5 @@
-import { Account } from "./Account.class"
-import { User } from "./User.class"
+import { Account } from './Account.class'
+import { User } from './User.class'
 
 export class Transaction {
   id
@@ -13,7 +13,7 @@ export class Transaction {
     _account: Account,
     _recipient: User,
     _sender: User,
-    _cashValue: number
+    _cashValue: number,
   ) {
     this.id = id
     this._account = _account

@@ -1,16 +1,11 @@
-import { Account } from './Account.class';
-import { Agency } from './Agency.class';
+import { Account } from './Account.class'
+import { Agency } from './Agency.class'
 export class CashMachine {
   id
   private _agency
   private _cash
 
-  constructor(
-    id: string,
-    _cash: number,
-    _agency: Agency
-
-    ) {
+  constructor(id: string, _cash: number, _agency: Agency) {
     this.id = id
     this._cash = _cash
     this._agency = _agency

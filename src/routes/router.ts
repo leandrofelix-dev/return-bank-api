@@ -1,12 +1,48 @@
 import { Router, Request, Response } from 'express'
 import { validate } from '../middlewares/handleValidation'
 
-import { createUser, deleteUser, getAllUsers, getUser, updateUser } from '../controllers/prisma/userController'
-import { createAccount, deleteAccount, getAccount, getAllAccounts, updateAccount } from '../controllers/prisma/accountController'
-import { createTransaction, deleteTransaction, getTransaction, getAllTransactions, updateTransaction } from '../controllers/prisma/transactionController'
-import { createTransfer, deleteTransfer, getTransfer, getAllTransfers, updateTransfer } from '../controllers/prisma/transferController'
-import { createAgency, deleteAgency, getAgency, getAllAgencys, updateAgency } from '../controllers/prisma/agencyController'
-import { createMachine, deleteMachine, getMachine, getAllMachines, updateMachine } from '../controllers/prisma/machineController'
+import {
+  createUser,
+  deleteUser,
+  getAllUsers,
+  getUser,
+  updateUser,
+} from '../controllers/prisma/userController'
+import {
+  createAccount,
+  deleteAccount,
+  getAccount,
+  getAllAccounts,
+  updateAccount,
+} from '../controllers/prisma/accountController'
+import {
+  createTransaction,
+  deleteTransaction,
+  getTransaction,
+  getAllTransactions,
+  updateTransaction,
+} from '../controllers/prisma/transactionController'
+import {
+  createTransfer,
+  deleteTransfer,
+  getTransfer,
+  getAllTransfers,
+  updateTransfer,
+} from '../controllers/prisma/transferController'
+import {
+  createAgency,
+  deleteAgency,
+  getAgency,
+  getAllAgencys,
+  updateAgency,
+} from '../controllers/prisma/agencyController'
+import {
+  createMachine,
+  deleteMachine,
+  getMachine,
+  getAllMachines,
+  updateMachine,
+} from '../controllers/prisma/machineController'
 
 import { userCreateValidator } from '../middlewares/validators/userValidator'
 import { accountCreateValidator } from '../middlewares/validators/accountValidator'
@@ -37,10 +73,15 @@ export default router
   /* Transaction */
   .get('/transaction/:id', getTransaction)
   .get('/getAllTransactions', getAllTransactions)
-  .post('/transaction', transactionCreateValidator(), validate, createTransaction)
+  .post(
+    '/transaction',
+    transactionCreateValidator(),
+    validate,
+    createTransaction,
+  )
   .delete('/transaction/:id', deleteTransaction)
 
-/* Transfer */
+  /* Transfer */
   .get('/transfer/:id', getTransfer)
   .get('/getAllTransfers', getAllTransfers)
   .post('/transfer', transactionCreateValidator(), validate, createTransfer)

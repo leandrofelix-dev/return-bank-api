@@ -1,5 +1,5 @@
-import { Date } from "mongoose"
-import { Account } from "./Account.class"
+import { Date } from 'mongoose'
+import { Account } from './Account.class'
 
 export class User {
   id
@@ -13,8 +13,8 @@ export class User {
     _name: string,
     _birthDate: Date,
     _password: string,
-    _accounts: Account[]
-  ){
+    _accounts: Account[],
+  ) {
     this.id = id
     this._name = _name
     this._birthDate = _birthDate

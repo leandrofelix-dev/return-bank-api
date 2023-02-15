@@ -5,12 +5,13 @@ export async function getTransfer(req: Request, res: Response) {
   const data = req.params.id
   try {
     const transfer = await prisma.transfer.findMany({
-      where: { id: data }
+      where: { id: data },
     })
-    if (!transfer) { return res.status(404).json({ error: 'transfer not found' }) }
+    if (!transfer) {
+      return res.status(404).json({ error: 'transfer not found' })
+    }
     return res.status(200).json(transfer)
-  }
-  catch (e: any) {
+  } catch (e: any) {
     console.log(`Error: ${e.message}`)
   }
 }
@@ -19,10 +20,11 @@ export async function getAllTransfers(req: Request, res: Response) {
   const data = req.params.id
   try {
     const transfer = await prisma.transfer.findMany()
-    if (!transfer) { return res.status(404).json({ error: 'Dont have transfers' }) }
+    if (!transfer) {
+      return res.status(404).json({ error: 'Dont have transfers' })
+    }
     return res.status(200).json(transfer)
-  }
-  catch (e: any) {
+  } catch (e: any) {
     console.log(`Error: ${e.message}`)
   }
 }
@@ -34,12 +36,11 @@ export async function createTransfer(req: Request, res: Response) {
       data: {
         cash: data.cash,
         transactionId: data.transactionId,
-        accountId: data.accountId
-      }
+        accountId: data.accountId,
+      },
     })
     return res.status(200).json(transfer)
-  }
-  catch (e: any) {
+  } catch (e: any) {
     console.log(`Error: ${e.message}`)
   }
 }
@@ -48,11 +49,10 @@ export async function deleteTransfer(req: Request, res: Response) {
   const data = req.params.id
   try {
     const transfer = await prisma.transfer.delete({
-      where: { id: data }
+      where: { id: data },
     })
     return res.status(200).json(transfer)
-  }
-  catch (e: any) {
+  } catch (e: any) {
     console.log(`Error: ${e.message}`)
   }
 }
@@ -62,16 +62,15 @@ export async function updateTransfer(req: Request, res: Response) {
   const id = req.params.id
   try {
     const transfer = await prisma.transfer.update({
-      where: { id: id },
+      where: { id },
       data: {
         cash: data.cash,
         transactionId: data.transactionId,
-        accountId: data.accountId
-      }
+        accountId: data.accountId,
+      },
     })
     return res.status(200).json(transfer)
-  }
-  catch (e: any) {
+  } catch (e: any) {
     console.log(`Error: ${e.message}`)
   }
 }
