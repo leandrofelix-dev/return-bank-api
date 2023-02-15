@@ -1,8 +1,6 @@
 /* eslint-disable import/first */
-
-import { prisma } from './lib/prisma'
 import express from 'express'
-import router from './routes/router'
+import router from './src/routes/router'
 
 const app = express()
 const port = process.env.PORT
