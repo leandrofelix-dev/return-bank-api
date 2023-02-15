@@ -2,9 +2,9 @@
     "name": "apirest-project",
     "version": "1.0.0",
     "description": "",
-    "main": "public/index.js",
+    "main": "dist/index.js",
     "scripts": {
-        "start": "tsc && node public/index.js",
+        "start": "tsc && node dist/index.js",
         "build": "tsc",
         "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
         "lint": "eslint src --ext .ts,.tsx --fix",
