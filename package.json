@@ -6,6 +6,7 @@
     "scripts": {
         "start": "tsc && node dist/server.js",
         "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc",
         "dev": "ts-node-dev --respawn --transpile-only ./app.ts",
         "lint": "eslint src --ext .ts,.tsx --fix",
         "migrate": "prisma migrate dev",

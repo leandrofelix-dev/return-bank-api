@@ -1,6 +1,6 @@
 /* eslint-disable import/first */
 import express from 'express'
-import router from './src/routes/router'
+import router from './routes/router'
 
 const app = express()
 const port = process.env.PORT
