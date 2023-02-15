@@ -1,7 +1,0 @@
-{
-    "version": "1.0.0",
-    "builds": [{
-        "src": "./dist/app.js",
-        "use": "@vercel/node"
-    }]
-}
