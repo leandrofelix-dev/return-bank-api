@@ -34,7 +34,8 @@ export async function createTransaction(req: Request, res: Response) {
       data: {
         cash: data.cash,
         accountId: data.accountId,
-        type: data.type
+        type: data.type,
+        description: data.description
       }
     })
     return res.status(200).json(transaction)
