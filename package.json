@@ -2,10 +2,10 @@
     "name": "apirest-project",
     "version": "1.0.0",
     "description": "",
-    "main": "src/app",
+    "main": "dist/app.js",
     "scripts": {
         "start": "tsc && node dist/app.js",
-        "clean": "rm -fr build",
+        "clean": "rm -fr dist",
         "build": "npm run clean && tsc",
         "dev": "ts-node-dev --respawn --transpile-only ./app.ts",
         "lint": "eslint src --ext .ts,.tsx --fix",
