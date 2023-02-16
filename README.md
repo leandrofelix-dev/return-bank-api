@@ -1,6 +1,6 @@
 # Return Bank
 
-![Return Bank Banner](images/light.png)
+![Return Bank Banner](./images/light.png)
 
 Esse projeto é um protótipo de um caixa eletrônico baseado em WEB, visando uma interface **moderna e inovadora**. Eai, vamos conhecê-lo?👨🏽‍🚀.
 
@@ -13,7 +13,7 @@ Esse projeto é um protótipo de um caixa eletrônico baseado em WEB, visando um
 
 A ideia desse projeto surgiu com a indignação em relação a experiência de usuário dos caixas eletrônicos dos bancos mais famosos do país. Por quê não fazer uma interface melhorada, não é mesmo?😉.
 
-![Screenshots do projeto ](images/dark.jpg)
+![Screenshots do projeto ](images/dark.png)
 
 ## Projeto ( Deploy via `vercel`)
 
