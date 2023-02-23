@@ -6,6 +6,8 @@ import {
   deleteUser,
   getAllUsers,
   getUser,
+  goToHome,
+  login,
   updateUser,
 } from '../controllers/prisma/userController'
 import {
@@ -13,21 +15,18 @@ import {
   deleteAccount,
   getAccount,
   getAllAccounts,
-  updateAccount,
 } from '../controllers/prisma/accountController'
 import {
   createTransaction,
   deleteTransaction,
   getTransaction,
   getAllTransactions,
-  updateTransaction,
 } from '../controllers/prisma/transactionController'
 import {
   createTransfer,
   deleteTransfer,
   getTransfer,
   getAllTransfers,
-  updateTransfer,
 } from '../controllers/prisma/transferController'
 import {
   createAgency,
@@ -43,12 +42,12 @@ import {
   getAllMachines,
   updateMachine,
 } from '../controllers/prisma/machineController'
-
 import { userCreateValidator } from '../middlewares/validators/userValidator'
 import { accountCreateValidator } from '../middlewares/validators/accountValidator'
 import { transactionCreateValidator } from '../middlewares/validators/transactionValidator'
 import { agencyCreateValidator } from '../middlewares/validators/agencyValidator'
 import { machineCreateValidator } from '../middlewares/validators/machineValidator'
+import { checkToken } from '../middlewares/checkToken'
 
 const router = Router()
 
@@ -58,9 +57,12 @@ export default router
   })
 
   /* User */
-  .get('/user/:id', getUser)
   .get('/getAllUsers', getAllUsers)
   .post('/user', userCreateValidator(), validate, createUser)
+
+  .post('/auth/login', login)
+  .get('/user/:id', checkToken, goToHome)
+
   .delete('/user/:id', deleteUser)
   .patch('/user/:id', updateUser)
 
