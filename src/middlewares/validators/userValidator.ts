@@ -12,8 +12,8 @@ export const userCreateValidator = () => {
     body('birthDate')
       .isDate({ format: 'YYYY-MM-DD' })
       .withMessage('Must be a valid date'),
-      // .isBefore(`${minBirthDateToCreateUser}`)
-      // .withMessage(`Must be a date before ${minBirthDateToCreateUser}`),
+    // .isBefore(`${minBirthDateToCreateUser}`)
+    // .withMessage(`Must be a date before ${minBirthDateToCreateUser}`),
 
     body('password')
       .isString()

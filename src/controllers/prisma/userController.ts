@@ -60,18 +60,20 @@ export async function login(req: Request, res: Response) {
   const user = await prisma.user.findUnique({ where: { id } })
   const passwordMatch = await bcrypt.compare(password, user?.password)
 
-  if (!user) { return res.status(404).json({ error: 'usuário não encontrado!' }) }
-  if (!passwordMatch) { return res.status(422).json({ error: 'Senha inválida!' }) }
+  if (!user) {
+    return res.status(404).json({ error: 'usuário não encontrado!' })
+  }
+  if (!passwordMatch) {
+    return res.status(422).json({ error: 'Senha inválida!' })
+  }
 
   try {
     const secret = process.env.SECRET
     const token = jwt.sign({ id: user.id }, secret)
     res.status(200).json({
-      msg: "Autenticação realizada com sucesso!",
-      token: token
+      msg: 'Autenticação realizada com sucesso!',
+      token,
     })
-
-
   } catch (e: any) {
     console.log(`Error: ${e.message}`)
     res.json({ error: 'Ocorreu um erro interno' })
@@ -80,17 +82,23 @@ export async function login(req: Request, res: Response) {
 
 export async function goToHome(req: Request, res: Response) {
   const id = req.params.id
+
   const user = await prisma.user.findUnique({ where: { id } })
-  if (!user) { return res.status(404).json({ error: 'usuário não encontrado!' }) }
-  const { name } = user
-  try {
-    res.json(name)
+  const accounts = await prisma.account.findMany({
+    where: { userId: id },
+    include: { owner: true },
+  })
+
+  if (!user) {
+    return res.status(404).json({ error: 'usuário não encontrado!' })
   }
-  catch (e: any) {
-    console.log(`Error: ${e.message}`)
+  const { name } = user
+
+  try {
+    res.json({ name, accounts })
+  } catch (e: any) {
     res.json({ error: 'Ocorreu um erro interno' })
   }
-
 }
 
 export async function deleteUser(req: Request, res: Response) {
