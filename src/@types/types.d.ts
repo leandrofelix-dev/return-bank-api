@@ -13,3 +13,5 @@ export type UserType = {
 }
 
 export type AccountType = 'checking' | 'savings' | 'international'
+
+export type saudacaoType = 'Bom dia⛅' | 'Boa tarde☀️' | 'Boa noite🌙'

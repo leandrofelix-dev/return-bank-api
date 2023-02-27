@@ -5,7 +5,6 @@ import {
   createUser,
   deleteUser,
   getAllUsers,
-  getUser,
   goToHome,
   login,
   updateUser,
@@ -48,6 +47,7 @@ import { transactionCreateValidator } from '../middlewares/validators/transactio
 import { agencyCreateValidator } from '../middlewares/validators/agencyValidator'
 import { machineCreateValidator } from '../middlewares/validators/machineValidator'
 import { checkToken } from '../middlewares/checkToken'
+import { getSalute } from '../lib/dayJs'
 
 const router = Router()
 
@@ -55,6 +55,8 @@ export default router
   .get('/test', (req: Request, res: Response) => {
     res.status(200).json({ msg: 'API Working👨🏽‍🚀' })
   })
+
+  .get('/salute', getSalute)
 
   /* User */
   .get('/getAllUsers', getAllUsers)
@@ -67,7 +69,7 @@ export default router
   .patch('/user/:id', updateUser)
 
   /* Account */
-  .get('/account/:id', getAccount)
+  .get('/account/:id', checkToken, getAccount)
   .get('/getAllAccounts', getAllAccounts)
   .post('/account', accountCreateValidator(), validate, createAccount)
   .delete('/account/:id', deleteAccount)
