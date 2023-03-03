@@ -5,7 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "start": "tsc && node dist/index.js",
-        "build": "tsc",
+        "build": "tsup src",
         "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
         "lint": "eslint src --ext .ts,.tsx --fix",
         "migrate": "prisma migrate dev",
@@ -27,6 +27,7 @@
         "jsonwebtoken": "^9.0.0",
         "mongoose": "^6.8.3",
         "morgan": "^1.10.0",
+        "tsup": "^6.6.3",
         "winston": "^3.8.2"
     },
     "devDependencies": {
