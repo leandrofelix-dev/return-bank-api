@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
 import { prisma } from '../../lib/prisma'
 
 export async function getAccount(req: Request, res: Response) {
@@ -40,6 +40,7 @@ export async function createAccount(req: Request, res: Response) {
         userId: data.userId,
       },
     })
+
     return res.status(200).json(account)
   } catch (e: any) {
     console.log(`Error: ${e.message}`)
@@ -58,21 +59,30 @@ export async function deleteAccount(req: Request, res: Response) {
   }
 }
 
-export async function updateAccount(req: Request, res: Response) {
-  const data = req.body
-  const id = req.params.id
+export async function updateAccount(req: Request, res: Response, next: NextFunction) {
   try {
-    const account = await prisma.account.update({
-      where: { id },
-      data: {
-        type: data.type,
-        owner: data.owner,
-        cash: 0,
-        userId: data.userId,
-      },
+    const {cash, accountId, type} = req.body
+    const account = await prisma.account.findUnique({
+      where: { id: accountId  },
     })
-    return res.status(200).json(account)
+
+    if(!account)  return res.status(500).json("Conta não existente")
+
+    if(account?.cash < cash)
+      return res.status(200).json("Saldo insuficiente")
+
+    const isTransfer = type === 'transferencia' ? true : false
+
+    await prisma.account.update({
+      where: { id: accountId  },
+       data: {
+         cash: Number(account?.cash) + cash
+        }
+    })
+
+    return res.status(200).json("Saque realizado")
   } catch (e: any) {
+    console.log("111")
     console.log(`Error: ${e.message}`)
   }
 }

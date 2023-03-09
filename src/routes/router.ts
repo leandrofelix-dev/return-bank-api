@@ -14,6 +14,7 @@ import {
   deleteAccount,
   getAccount,
   getAllAccounts,
+  updateAccount
 } from '../controllers/prisma/accountController'
 import {
   createTransaction,
@@ -82,6 +83,7 @@ export default router
     transactionCreateValidator(),
     validate,
     createTransaction,
+    updateAccount
   )
   .delete('/transaction/:id', deleteTransaction)
 

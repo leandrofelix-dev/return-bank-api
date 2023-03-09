@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
 import { prisma } from '../../lib/prisma'
 
 export async function getTransaction(req: Request, res: Response) {
@@ -29,7 +29,7 @@ export async function getAllTransactions(req: Request, res: Response) {
   }
 }
 
-export async function createTransaction(req: Request, res: Response) {
+export async function createTransaction(req: Request, res: Response, next: NextFunction) {
   const data = req.body
   try {
     const transaction = await prisma.transaction.create({
@@ -40,11 +40,15 @@ export async function createTransaction(req: Request, res: Response) {
         description: data.description,
       },
     })
-    return res.status(200).json(transaction)
+
+     return next()
   } catch (e: any) {
     console.log(`Error: ${e.message}`)
   }
 }
+
+
+
 
 export async function deleteTransaction(req: Request, res: Response) {
   const data = req.params.id
